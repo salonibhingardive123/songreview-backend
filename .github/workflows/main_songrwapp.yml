@@ -38,18 +38,22 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    
+
     steps:
-      - name: Download artifact from build job
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
           name: node-app
-      
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: 4eea5f28-3fbc-4880-a368-72943908d4e3
+          tenant-id: c81f7365-2c29-449a-9c93-0cd942c3ad0f
+          subscription-id: 98118df5-5803-4f31-a193-f52c59176325
+
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'SongRWApp'
-          slot-name: 'Production'
+          app-name: SongRWApp
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6C98255C698D4BD9B9FF6ABB735E9241 }}
