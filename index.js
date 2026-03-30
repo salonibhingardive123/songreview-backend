@@ -1,3 +1,14 @@
+//newly added part for application insights
+
+const appInsights = require("applicationinsights");
+
+appInsights.setup(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING)
+    .setAutoCollectRequests(true)
+    .setAutoCollectExceptions(true)
+    .setAutoCollectDependencies(true)
+    .start();
+// newly added part ends here
+
 const express = require("express");
 const cors = require("cors");
 const { CosmosClient } = require("@azure/cosmos");
