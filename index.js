@@ -1,12 +1,12 @@
 //newly added part for application insights
 
-const appInsights = require("applicationinsights");
+//const appInsights = require("applicationinsights");
 
-appInsights.setup(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING)
-    .setAutoCollectRequests(true)
-    .setAutoCollectExceptions(true)
-    .setAutoCollectDependencies(true)
-    .start();
+//appInsights.setup(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING)
+    //.setAutoCollectRequests(true)
+    //.setAutoCollectExceptions(true)
+    //.setAutoCollectDependencies(true)
+    //.start();
 // newly added part ends here
 
 const express = require("express");
