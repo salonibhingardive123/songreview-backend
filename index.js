@@ -2,10 +2,24 @@
 
 const express = require("express");
 const cors = require("cors");
+
+
+
 const { CosmosClient } = require("@azure/cosmos");
 
 const app = express();
-app.use(cors());
+//app.use(cors());
+
+
+const corsOptions = {
+  origin: [
+    "https://happy-beach-07ced3303.1.azurestaticapps.net", "https://webapp.salonibb.in"
+    ],
+  methods: ["GET", "POST", "OPTIONS"], allowedHeaders: ["Content-Type"], };
+app.use(cors(corsOptions));
+
+
+
 app.use(express.json());
 
 // Environment variables (Azure App Service settings)
